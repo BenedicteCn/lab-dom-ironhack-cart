@@ -1,7 +1,6 @@
 // ITERATION 1
 
 function updateSubtotal(product) {
-  console.log('Calculating subtotal, yey!');
   const price = product.querySelector('.price span').textContent;
   const quantity = product.querySelector('.quantity input').value;
   product.querySelector('.subtotal span').textContent = price * quantity
@@ -41,19 +40,24 @@ function calculateAll() {
 
 function removeProduct(event) {
   const target = event.currentTarget;
-  console.log('The target in remove is:', target);
   return target.parentNode.parentNode.remove();
 
-  //... your code goes here
 }
 
 // ITERATION 5
 
 function createProduct(event) {
   const target = event.currentTarget;
-  console.log('The target in createproduct is:', target);
-  const createdParagraph = document.createElement('p')
-  target.createdParagraph
+  const template = document.querySelector("#newproduct");
+  const tbody = document.querySelector("tbody");
+  const clone = document.importNode(template.content, true);
+  const td = clone.querySelectorAll("td");
+  const newName = document.querySelector('.create-product input[type="text"]');
+
+  td[0].textContent = document.querySelector('.create-product input[type="text"]').value;
+  td[1].textContent = document.querySelector('.create-product input[type="number"]').value;
+
+  tbody.appendChild(clone);
 }
 
 window.addEventListener('load', () => {
